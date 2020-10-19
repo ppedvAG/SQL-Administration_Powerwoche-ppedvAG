@@ -1,0 +1,13 @@
+EXEC sys.sp_configure N'contained database authentication', N'1'
+GO
+RECONFIGURE WITH OVERRIDE
+GO
+
+CREATE DATABASE [ContDB]
+ CONTAINMENT = PARTIAL
+ ON  PRIMARY 
+( NAME = N'ContDB', FILENAME = N'C:\_ODINDBS\ContDB.mdf' , SIZE = 8192KB , FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'ContDB_log', FILENAME = N'C:\_ODINDBS\ContDB_log.ldf' , SIZE = 8192KB , FILEGROWTH = 65536KB )
+GO
+
